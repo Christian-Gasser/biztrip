@@ -89,7 +89,7 @@ export async function updateTrip({ id, title, description, img, startTrip, endTr
 
 export async function deleteTrip({ id }) {
   try {
-    await apiService('PUT', 'trips/'+id, true);
+    await apiService('DELETE', 'trips/'+id, true);
   } catch {
     return false
   }

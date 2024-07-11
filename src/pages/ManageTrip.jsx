@@ -17,7 +17,7 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
     })
 
     function handleSend() {
-
+        
     }
 
     if (!isLoggedIn || !isPublisher) {
