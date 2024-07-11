@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import Trips from "./pages/Trips";
 import Trip from "./pages/Trip";
 import Bookings from "./pages/Bookings";
+import Booking from "./pages/Booking";
 import Management from "./pages/Management";
 import ManageTrip from "./pages/ManageTrip";
 import NotFound from "./pages/NotFound";
@@ -65,6 +66,7 @@ export default function App() {
             <Route path="/trips" element={<Trips />} />
             <Route path="/trips/:tripId" element={<Trip isLoggedIn={isLoggedIn} />} />
             <Route path="/bookings" element={<Bookings isLoggedIn={isLoggedIn}/>} />
+            <Route path="/bookings/:bookingId" element={<Booking isLoggedIn={isLoggedIn} />} />
             <Route path="/management" element={<Management isPublisher={isPublisher} isLoggedIn={isLoggedIn}/>} />
             <Route path="/management/:tripId" element={<ManageTrip isPublisher={isPublisher} isLoggedIn={isLoggedIn} />} />
             <Route path="*" element={<NotFound />} />

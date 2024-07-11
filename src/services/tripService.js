@@ -12,13 +12,15 @@ export async function getTrips() {
 }
 
 export async function getTrip(id) {
+  console.log(id)
   let response 
   try {
-    response = await apiService('GET', 'trips/'+id, true);
+    response = await apiService('GET', 'trips/'+id, false);
   } catch (err) {
     //error handling
     return
   }
+  console.log(response)
   return response
 }
 

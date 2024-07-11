@@ -8,7 +8,7 @@ import { Link as RouterLink } from "react-router-dom"
 import { getTripByPublisher } from "../services/tripService"
 import { getAltbyId } from "../services/pictureService"
 
-export default function Management({ isPublisher }) {
+export default function Management({ isPublisher, isLoggedIn }) {
   const [isLoading, setIsLoading] = useState(false)
   const [trips, setTrips] = useState([])
 
@@ -69,14 +69,14 @@ export default function Management({ isPublisher }) {
   ]
 
 
-  if (!isPublisher) {
+  if (!isLoggedIn || !isPublisher) {
     return (
-      <div className="content">
-        <h2>You are not a publisher.</h2>
-        <p>Please request publisher role to see create and manage your BizTrips.</p>
-      </div>
+        <div className="content">
+            <h2>You have no rights to manage a trip.</h2>
+            <p>Please log in with your publisher account to manage trips.</p>
+        </div>
     )
-  }
+}
 
   if (isLoading) {
     return (

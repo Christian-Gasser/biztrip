@@ -25,7 +25,7 @@ export default function Bookings({ isLoggedIn }) {
       renderCell: (params) => {
         return (
           <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-            <EditIcon link={"/trips/" + params.row.bookingId} />
+            <EditIcon link={"/bookings/" + params.row.id} />
           </div>
         );
       }
@@ -39,7 +39,7 @@ export default function Bookings({ isLoggedIn }) {
       renderCell: (params) => {
         return (
           <div className="d-flex justify-content-between align-items-center" style={{ cursor: "pointer" }}>
-            <DeleteIcon type={"booking"} id={params.row.bookingId} />
+            <DeleteIcon type={"bookings"} id={params.row.id} />
           </div>
         );
       }
@@ -60,10 +60,10 @@ export default function Bookings({ isLoggedIn }) {
       })
       return {
         tripId: trip.id,
-        name: booking.name,
-        people: trip.people,
+        name: trip.title,
+        people: booking.people,
         startDate: startDate,
-        bookingId: booking.id,
+        id: booking.id,
       }
     })
     setBookings(userBookings)

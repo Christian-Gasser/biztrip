@@ -35,6 +35,7 @@ export async function apiService(method, url, auth, data) {
     const response = await fetch(baseUrl + url, requestOptions);
     if (response.ok === true) {
         const body = response.json()
+        console.log(body)
         return body;
     };
     //error handling

@@ -35,6 +35,17 @@ body {
   margin-bottom: 15px; 
 }
 
+.booking {
+  display: flex;
+}
+.booking-card {
+  width: 20%;
+}
+.booking-selectors {
+  width: 70%;
+  margin-left: 10%;
+}
+
 header {
   display: flex;
   justify-content: space-between;

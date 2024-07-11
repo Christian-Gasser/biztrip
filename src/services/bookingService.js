@@ -26,8 +26,19 @@ export async function getBookingsByProduct(productId) {
     return response
 }
 
-export async function createBooking({ tripId, peoples, meetings }) {
-    const userId = localStorage.getItem('userId')
+export async function getBooking(id) {
+    let response
+    try {
+        response = await apiService('GET', 'bookings/' + id, true);
+    } catch (err) {
+        //error handling
+        return 
+    }
+    return response
+}
+
+export async function createBooking({ tripId, people, meetings }) {
+    const userId = parseInt(localStorage.getItem('userId'))
     if (!userId) {
         return false
     }
@@ -35,7 +46,7 @@ export async function createBooking({ tripId, peoples, meetings }) {
         const payload = {
             userId: userId,
             tripId: tripId,
-            peoples, peoples,
+            people: people,
             meetings, meetings
         }
         await apiService('POST', 'bookings', true, payload);
@@ -46,8 +57,8 @@ export async function createBooking({ tripId, peoples, meetings }) {
     return true
 }
 
-export async function updateBooking({ bookingId, tripId, peoples, meetings }) {
-    const userId = localStorage.getItem('userId')
+export async function updateBooking({ bookingId, tripId, people, meetings }) {
+    const userId = parseInt(localStorage.getItem('userId'))
     if (!userId) {
         return false
     }
@@ -55,7 +66,7 @@ export async function updateBooking({ bookingId, tripId, peoples, meetings }) {
         const payload = {
             userId: userId,
             tripId: tripId,
-            peoples, peoples,
+            people, people,
             meetings, meetings
         }
         await apiService('PUT', 'bookings/' + bookingId, true, payload);

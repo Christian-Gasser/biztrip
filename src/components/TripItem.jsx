@@ -28,7 +28,7 @@ export default function TripItem({ trip }) {
         component="img"
         alt={getAltbyId(trip.img)}
         height="140"
-        image={"images/items/"+trip.img+".jpg"}
+        image={"/images/items/"+trip.img+".jpg"}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
