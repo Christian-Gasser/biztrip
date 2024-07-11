@@ -1,108 +1,77 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { getUser, requestPublisher } from "./services/authService";
 import "./App.css";
-import Footer from "./Footer";
-import Header from "./Header";
 
-const trips = [
-  {
-    id: 1,
-    title: "BT01",
-    description: "San Francisco World Trade Center on new Server/IOT/Client ",
-    startTrip: [2021, 2, 13, 0, 0],
-    endTrip: [2021, 2, 15, 16, 56],
-    meetings: [
-      {
-        id: 1,
-        title: "One Conference",
-        description: "Key Note on One Conference",
-      },
-      {
-        id: 2,
-        title: "Zero Conference",
-        description: "Workshop Zero on One Conference",
-      },
-    ],
-  },
-  {
-    id: 2,
-    title: "BT02",
-    description: "Santa Clara Halley on new Server/IOT/Client",
-    startTrip: [2021, 6, 23, 9, 0],
-    endTrip: [2021, 6, 27, 16, 56],
-    meetings: [
-      {
-        id: 3,
-        title: "One Conference",
-        description: "HandsOn on One Conference",
-      },
-      {
-        id: 4,
-        title: "One Conference",
-        description: "Key Note on One Conference",
-      },
-    ],
-  },
-  {
-    id: 3,
-    title: "BT03",
-    description: "San Cose City Halley on Docker/IOT/Client",
-    startTrip: [2021, 12, 13, 9, 0],
-    endTrip: [2021, 12, 15, 16, 56],
-    meetings: [
-      {
-        id: 5,
-        title: "One Conference",
-        description: "Key Note on One Conference",
-      },
-    ],
-  },
-];
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Trips from "./pages/Trips";
+import Trip from "./pages/Trip";
+import Bookings from "./pages/Bookings";
+import Management from "./pages/Management";
+import ManageTrip from "./pages/ManageTrip";
+import NotFound from "./pages/NotFound";
+
 
 export default function App() {
-  function renderTrip(t) {
-    return (
-      <div className="product" key={t.id}>
-        <figure>
-          <div>
-            <img src={"images/items/" + t.id + ".jpg"} alt="name " />
-          </div>
-          <figcaption>
-            <a href="#. . . ">{t.title}</a>
-            <div>
-              <span>
-                {t.startTrip[2] + "-" + t.startTrip[1] + "-" + t.startTrip[0]}
-              </span>
-            </div>
-            <p>{t.description}</p>
-            <div>
-              <button type="button" disabled>
-                Add to Triplist
-              </button>
-            </div>
-          </figcaption>
-        </figure>
-      </div>
-    );
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isPublisher, setIsPublisher] = useState(false)
+
+  async function handleMount() {
+    const token = localStorage.getItem('token')
+    if (token !== null) {
+      const user = await getUser()
+      if (!user) {
+        logout()
+        return
+      }
+      setIsLoggedIn(true)
+      setIsPublisher(user.isPublisher)
+    }
+  }
+
+  useEffect(() => {
+    handleMount()
+  }, [])
+
+  async function login() {
+    setIsLoggedIn(true)
+    const user = await getUser()
+    setIsPublisher(user.isPublisher)
+  }
+
+  function logout() {
+    setIsLoggedIn(false)
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+  }
+
+  async function handleRequestPublisher() {
+    /* await requestPublisher()
+    setIsPublisher(true) */
   }
 
   return (
     <>
-      <div>
-        <Header />
+      <div className="app">
+        <Header onLogout={logout} onRequestPublisher={handleRequestPublisher} isLoggedIn={isLoggedIn} isPublisher={isPublisher} />
         <main>
-          <section id="filters">
-            <label htmlFor="month">Filter by Month:</label>{" "}
-            <select id="size">
-              <option value="">All months</option>
-              <option value="1">January</option>
-              <option value="2">February</option>
-              <option value="3">March</option>
-            </select>
-          </section>
-          <section id="products">{trips.map(renderTrip)}</section>
+          <Routes>
+            <Route path="/" element={<Navigate to="/trips" replace />} />
+            <Route path="/login" element={isLoggedIn ? <Navigate to="/trips" replace /> : <Login onLogin={login} />} />
+            <Route path="/register" element={isLoggedIn ? <Navigate to="/trips" replace /> : <Register onLogin={login} />} />
+            <Route path="/trips" element={<Trips />} />
+            <Route path="/trips/:tripId" element={<Trip isLoggedIn={isLoggedIn} />} />
+            <Route path="/bookings" element={<Bookings isLoggedIn={isLoggedIn}/>} />
+            <Route path="/management" element={<Management isPublisher={isPublisher} isLoggedIn={isLoggedIn}/>} />
+            <Route path="/management/:tripId" element={<ManageTrip isPublisher={isPublisher} isLoggedIn={isLoggedIn} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </main>
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 }

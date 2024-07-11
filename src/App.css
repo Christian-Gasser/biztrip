@@ -2,6 +2,12 @@ html {
   height: 100%;
 }
 
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   font-family: open sans, sans-serif;
   font-size: 14px;
@@ -15,29 +21,47 @@ body {
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Avoid the IE 10-11 `min-height` bug. */
+  height: 100vh;
+  /* Avoid the IE 10-11 `min-height` bug. */
 }
 
 .content {
-  flex: 1 0 auto;
-  padding: 20px;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.content > *:not(:last-child) {
+  display: block;
+  margin-bottom: 15px; 
 }
 
 header {
   display: flex;
-  padding-left: 20px;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #000000;
 }
 
 header img {
   max-height: 100px;
 }
 
-nav {
+.nav {
   display: flex;
   align-items: center;
 }
 
+.nav-item {
+  padding-left: 20px;
+}
+
+Link {
+  color: rgb(20, 111, 248)
+}
+
 footer {
+  margin-top: auto;
+  margin-bottom: 0;
   text-align: center;
   color: gray;
   padding: 20px 0 20px 0;
@@ -184,7 +208,7 @@ div[role="alert"] {
   margin-top: 20px;
 } */
 
-form > div {
+form>div {
   margin-bottom: 20px;
 }
 
@@ -193,11 +217,13 @@ form > div {
   align-items: center;
   justify-content: center;
 }
+
 .lds-dual-ring {
   display: inline-block;
   width: 80px;
   height: 80px;
 }
+
 .lds-dual-ring:after {
   content: " ";
   display: block;
@@ -209,10 +235,12 @@ form > div {
   border-color: #cef transparent #cef transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
+
 @keyframes lds-dual-ring {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

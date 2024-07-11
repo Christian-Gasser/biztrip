@@ -1,56 +1,71 @@
 {
   "trips": [
     {
-      "id": 1,
-      "title": "BT01",
-      "description": "San Francisco World Trade Center on new Server/IOT/Client ",
-      "startTrip": [2021, 2, 13, 0, 0],
-      "endTrip": [2021, 2, 15, 16, 56],
+      "userId": 1,
+      "title": "TestTrip",
+      "description": "This is a test Trip",
+      "img": 1,
+      "startTrip": [
+        2021,
+        2,
+        13,
+        0,
+        0
+      ],
+      "endTrip": [
+        2021,
+        2,
+        15,
+        16,
+        56
+      ],
+      "pricePerPerson": 1000,
       "meetings": [
         {
           "id": 1,
-          "title": "One Conference",
-          "description": "Key Note on One Conference"
+          "title": "First Conference",
+          "description": "Description of First Conference",
+          "date": [
+            2021,
+            2,
+            13,
+            14,
+            0
+          ]
         },
         {
           "id": 2,
-          "title": "Zero Conference",
-          "description": "Workshop Zero on One Conference"
+          "title": "Second Conference",
+          "description": "Description of Second Conference",
+          "date": [
+            2021,
+            2,
+            14,
+            10,
+            30
+          ]
         }
-      ]
+      ],
+      "id": 1
+    }
+  ],
+  "bookings": [],
+  "users": [
+    {
+      "email": "christian.gasser@lernende.bbw.ch",
+      "password": "$2a$10$jonbyFezB4Sjz9wheNL6R.exbljgCjagVmhCqHwLZpINWCmGo9OJO",
+      "firstName": "Christian",
+      "lastName": "Gasser",
+      "isPublisher": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "BT02",
-      "description": "Santa Clara Halley on new Server/IOT/Client",
-      "startTrip": [2021, 6, 23, 9, 0],
-      "endTrip": [2021, 6, 27, 16, 56],
-      "meetings": [
-        {
-          "id": 3,
-          "title": "One Conference",
-          "description": "HandsOn on One Conference"
-        },
-        {
-          "id": 4,
-          "title": "One Conference",
-          "description": "Key Note on One Conference"
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "BT03",
-      "description": "San Cose City Halley on Docker/IOT/Client",
-      "startTrip": [2021, 12, 13, 9, 0],
-      "endTrip": [2021, 12, 15, 16, 56],
-      "meetings": [
-        {
-          "id": 5,
-          "title": "One Conference",
-          "description": "Key Note on One Conference"
-        }
-      ]
+      "email": "peter@meier.ch",
+      "password": "$2a$10$RwN2SmE4eRCFR9op0OOL2emDndZNvnQPnXgutnJDTdiwmG5IT8eNW",
+      "firstName": "Peter",
+      "lastName": "Meier",
+      "isPublisher": false,
+      "id": 2
     }
   ]
 }
