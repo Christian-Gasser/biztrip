@@ -29,7 +29,7 @@ export default function TimeInput({ label, value, onChange }) {
     function changeHour(newVal) {
         const valid = newVal > 0 && newVal < 25? true : false
         setHourError(!valid)
-        onChange([value[0], value[1], value[2], newVal, value[4]], validity)
+        onChange([value[0], value[1], value[2], parseInt(newVal), value[4]], validity)
     }
 
     function changeMinute(newVal) {
