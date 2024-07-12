@@ -168,10 +168,10 @@
     },
     {
       "email": "peter@meier.ch",
-      "password": "$2a$10$RwN2SmE4eRCFR9op0OOL2emDndZNvnQPnXgutnJDTdiwmG5IT8eNW",
+      "password": "$2a$10$oPJEHZiLRr04hNbp6x7gKe3h1wjNe7VsdCNQWc76tuztRj4sffMVW",
       "firstName": "Peter",
       "lastName": "Meier",
-      "isPublisher": false,
+      "isPublisher": true,
       "id": 2
     },
     {

@@ -26,12 +26,12 @@ export async function login(loginData) {
     return true
 }
 
-export async function requestPublisher() {
+export async function requestPublisher(password) {
     const user = await getUser()
     console.log(user)
     const modifiedUser = {
-/*         email: user.email,
-        password:  user.password, */
+        email: user.email,
+        password:  password,
         firstName: user.firstName,
         lastName: user.lastName,
         isPublisher: true,
