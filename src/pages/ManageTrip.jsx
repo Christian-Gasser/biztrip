@@ -20,9 +20,9 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
         const [descriptionError, setDescriptionError] = useState(undefined)
         const [img, setImg] = useState(undefined)
         const [imgError, setImgError] = useState(undefined)
-        const [startTrip, setStartTrip] = useState(undefined)
+        const [startTrip, setStartTrip] = useState({})
         const [startTripError, setStartTripError] = useState(undefined)
-        const [endTrip, setEndTrip] = useState(undefined)
+        const [endTrip, setEndTrip] = useState({})
         const [endTripError, setEndTripError] = useState(undefined)
         const [pricePerPerson, setPricePerPerson] = useState(undefined)
         const [pricePerPersonError, setPricePerPersonError] = useState(undefined)
@@ -124,21 +124,7 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
                 <Select label="Img" value={img} variant="standard" onChange={(e) => changeImg(e.target.value)} sx={{ width: '70%' }}>
                     {getPictures().map((picture) => <MenuItem key={picture.id} value={picture.id} >{picture.alt}</MenuItem>)}
                 </Select>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DateTimePicker
-                        label="Start Date"
-                        value={startTrip}
-                        onChange={(newValue) => {
-                            setStartTrip(newValue)
-                            console.log(newValue)
-                        }}
-                    />
-                    <DateTimePicker
-                        label="End Date"
-                        value={endTrip}
-                        onChange={(newValue) => setEndTrip(newValue)}
-                    />
-                </LocalizationProvider>
+                <div className="flex"></div>
                 <Button variant="contained" disabled={!valid} onClick={handleSend}>{tripId === "new" ? "Create Trip" : "Update Trip"}</Button>
             </div>
         )

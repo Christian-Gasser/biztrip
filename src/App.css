@@ -45,6 +45,9 @@ body {
   width: 70%;
   margin-left: 10%;
 }
+.flex {
+  display: flex;
+}
 
 header {
   display: flex;
