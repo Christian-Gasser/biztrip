@@ -11,6 +11,7 @@ import { getPictures } from "../services/pictureService"
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import TimeInput from "../components/TimeInput"
 
 export default function ManageTrip({ isLoggedIn, isPublisher }) {
         const [isLoading, setIsLoading] = useState(false)
@@ -20,9 +21,9 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
         const [descriptionError, setDescriptionError] = useState(undefined)
         const [img, setImg] = useState(undefined)
         const [imgError, setImgError] = useState(undefined)
-        const [startTrip, setStartTrip] = useState({})
+        const [startTrip, setStartTrip] = useState([0, 0, 0, 0, 0])
         const [startTripError, setStartTripError] = useState(undefined)
-        const [endTrip, setEndTrip] = useState({})
+        const [endTrip, setEndTrip] = useState([0, 0, 0, 0, 0])
         const [endTripError, setEndTripError] = useState(undefined)
         const [pricePerPerson, setPricePerPerson] = useState(undefined)
         const [pricePerPersonError, setPricePerPersonError] = useState(undefined)
@@ -78,6 +79,25 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
             }
             validity()
         }
+        function changeStartTrip(newVal, valid) {
+            setStartTrip(newVal)
+            setStartTripError(valid)
+            validity()
+        }
+        function changeEndTrip(newVal, valid) {
+            setEndTrip(newVal)
+            setEndTripError(valid)
+            validity()
+        }
+        function changePricePerPerson(newVal) {
+            setPricePerPerson(newVal)
+            if (newVal < 0) {
+                setPricePerPersonError(true)
+            } else {
+                setPricePerPersonError(false)
+            }
+            validity()
+        }
 
         function validity() {
             if (titleError === false
@@ -124,7 +144,9 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
                 <Select label="Img" value={img} variant="standard" onChange={(e) => changeImg(e.target.value)} sx={{ width: '70%' }}>
                     {getPictures().map((picture) => <MenuItem key={picture.id} value={picture.id} >{picture.alt}</MenuItem>)}
                 </Select>
-                <div className="flex"></div>
+                <TimeInput label="Start date" value={startTrip} onChange={changeStartTrip}/>
+                <TimeInput label="End date" value={endTrip} onChange={changeEndTrip}/>
+                <InputField label="Price per person" type="number" error={pricePerPersonError} errorText="Price must be in minimum CHF 0.-" value={pricePerPerson} onChange={changePricePerPerson} />
                 <Button variant="contained" disabled={!valid} onClick={handleSend}>{tripId === "new" ? "Create Trip" : "Update Trip"}</Button>
             </div>
         )
