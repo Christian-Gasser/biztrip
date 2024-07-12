@@ -11,19 +11,19 @@ export default function TimeInput({ label, value, onChange }) {
     function changeYear(newVal) {
         const valid = newVal > 999 && newVal < 10000? true : false
         setYearError(!valid)
-        onChange([newVal, value[1], value[2], value[3], value[4]], validity)
+        onChange([parseInt(newVal), value[1], value[2], value[3], value[4]], validity)
     }
 
     function changeMonth(newVal) {
         const valid = newVal > 0 && newVal < 13? true : false
         setMonthError(!valid)
-        onChange([value[0], newVal, value[2], value[3], value[4]], validity)
+        onChange([value[0], parseInt(newVal), value[2], value[3], value[4]], validity)
     }
 
     function changeDay(newVal) {
         const valid = newVal > 0 && newVal < 32? true : false
         setDayError(!valid)
-        onChange([value[0], value[1], newVal, value[3], value[4]], validity)
+        onChange([value[0], value[1], parseInt(newVal), value[3], value[4]], validity)
     }
 
     function changeHour(newVal) {
@@ -35,10 +35,11 @@ export default function TimeInput({ label, value, onChange }) {
     function changeMinute(newVal) {
         const valid = newVal >= 0 && newVal < 61? true : false
         setMinuteError(!valid)
-        onChange([value[0], value[1], value[2], value[3], newVal], validity)
+        onChange([value[0], value[1], value[2], value[3], parseInt(newVal)], validity)
     }
 
     function validity() {
+        console.log(yearError=== false && monthError === false && dayError === false && hourError === false && minuteError === false)
         return yearError=== false && monthError === false && dayError === false && hourError === false && minuteError === false
     }
 

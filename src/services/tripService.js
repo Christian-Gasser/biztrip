@@ -39,8 +39,8 @@ export async function getTripByPublisher() {
   return response
 }
 
-export async function createTrip({ id, title, description, img, startTrip, endTrip, pricePerPerson, meetings }) {
-  const publisherId = localStorage.getItem('userId')
+export async function createTrip({ title, description, img, startTrip, endTrip, pricePerPerson, meetings }) {
+  const publisherId = parseInt(localStorage.getItem('userId'))
   if (!publisherId) {
     return 
   }
@@ -49,12 +49,11 @@ export async function createTrip({ id, title, description, img, startTrip, endTr
       userId: publisherId,
       title,
       description,
-      img,
+      img: parseInt(img),
       startTrip,
       endTrip,
       pricePerPerson,
-      meetings,
-      id
+      meetings
     }
     await apiService('POST', 'trips', true, newTrip);
   } catch  {
@@ -65,7 +64,7 @@ export async function createTrip({ id, title, description, img, startTrip, endTr
 }
 
 export async function updateTrip({ id, title, description, img, startTrip, endTrip, pricePerPerson, meetings }) {
-  const publisherId = localStorage.getItem('userId')
+  const publisherId = parseInt(localStorage.getItem('userId'))
   if (!publisherId) {
     return 
   }
@@ -74,7 +73,7 @@ export async function updateTrip({ id, title, description, img, startTrip, endTr
       userId: publisherId,
       title,
       description,
-      img,
+      img: parseInt(img),
       startTrip,
       endTrip,
       pricePerPerson,

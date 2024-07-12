@@ -43,6 +43,7 @@ const pictures = [
 ]
 
 export function getAltbyId(searchId) {
+    console.log(searchId)
     const selectedPicture = pictures.find((picture) => picture.id === searchId)
     return selectedPicture.alt
 }

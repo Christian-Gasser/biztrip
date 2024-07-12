@@ -16,7 +16,7 @@ export default function Trips() {
   }, [])
 
   return (
-    <div>
+    <div className="flex">
       {/* <section id="filters">
       <InputLabel id="filter-label">Age</InputLabel>
         <Select
@@ -35,7 +35,7 @@ export default function Trips() {
           <Me
         </Select>
       </section> */}
-      <section id="trips">
+      <section id="trips" className="flex">
         {trips.map((trip) => <TripItem key={trip.id} trip={trip}/>)}
         </section>
     </div >

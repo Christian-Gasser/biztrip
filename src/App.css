@@ -35,6 +35,9 @@ body {
   margin-bottom: 15px; 
 }
 
+#trips > * {
+  margin: 10px;
+}
 .booking {
   display: flex;
 }
