@@ -30,8 +30,8 @@ export async function requestPublisher() {
     const user = await getUser()
     console.log(user)
     const modifiedUser = {
-        email: user.email,
-        password:  user.password,
+/*         email: user.email,
+        password:  user.password, */
         firstName: user.firstName,
         lastName: user.lastName,
         isPublisher: true,
