@@ -1,11 +1,11 @@
 /* https://mui.com/material-ui/react-autocomplete/
 https://mui.com/x/react-date-pickers/date-time-range-picker/ */
 
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Spinner from "../components/Spinner"
 import { useState, useEffect } from "react"
 import { createTrip, getTrip, updateTrip } from "../services/tripService"
-import { Button, Select, MenuItem, Card, CardActions, CardContent, Typography } from "@mui/material"
+import { Button, Select, MenuItem, Card, CardActions, CardContent, Typography, fabClasses } from "@mui/material"
 import InputField from "../components/InputField"
 import { getPictures } from "../services/pictureService"
 import TimeInput from "../components/TimeInput"
@@ -27,24 +27,32 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
     const [meetings, setMeetings] = useState([])
     const [valid, setValid] = useState(false)
     const { tripId } = useParams()
+    const navigate = useNavigate()
 
     async function handleMount() {
         setIsLoading(true)
         if (tripId !== "new") {
             const trip = await getTrip(tripId)
             setTitle(trip.title)
+            setTitleError(false)
             setDescription(trip.description)
+            setDescriptionError(false)
             setImg(trip.img)
+            setImgError(false)
             setStartTrip(trip.startTrip)
+            setStartTripError(false)
             setEndTrip(trip.endTrip)
+            setEndTripError(false)
             setPricePerPerson(trip.pricePerPerson)
+            setPricePerPersonError(false)
             setMeetings([...trip.meetings])
+            setValid(true)
         }
         setIsLoading(false)
     }
     useEffect(() => {
         handleMount()
-    })
+    }, [])
 
     function changeTitle(newVal) {
         setTitle(newVal)
@@ -141,6 +149,7 @@ export default function ManageTrip({ isLoggedIn, isPublisher }) {
                 meetings: meetings
             })
         }
+        navigate("/management")
     }
     function addNewMeeting() {
         console.log(meetings)

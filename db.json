@@ -47,6 +47,102 @@
         }
       ],
       "id": 1
+    },
+    {
+      "userId": 1,
+      "title": "Test Trip 2",
+      "description": "This is a second test Trip!\nWow!",
+      "img": 3,
+      "startTrip": [
+        2024,
+        12,
+        31,
+        "12",
+        0
+      ],
+      "endTrip": [
+        2025,
+        1,
+        2,
+        "14",
+        0
+      ],
+      "pricePerPerson": "1500",
+      "meetings": [
+        {
+          "id": 1,
+          "title": "Meeting One",
+          "description": "This is the Description of Meeting One.",
+          "date": [
+            2024,
+            12,
+            31,
+            "17",
+            30
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Second Meeting",
+          "description": "This is a second Meeting!",
+          "date": [
+            2025,
+            1,
+            1,
+            "10",
+            0
+          ]
+        }
+      ],
+      "id": 2
+    },
+    {
+      "userId": 1,
+      "title": "Test Trip 3",
+      "description": "This is a second test Trip!\nWow!",
+      "img": 3,
+      "startTrip": [
+        2024,
+        12,
+        31,
+        "12",
+        0
+      ],
+      "endTrip": [
+        2025,
+        1,
+        2,
+        "14",
+        0
+      ],
+      "pricePerPerson": "1500",
+      "meetings": [
+        {
+          "id": 1,
+          "title": "Meeting One",
+          "description": "This is the Description of Meeting One.",
+          "date": [
+            2024,
+            12,
+            31,
+            "17",
+            30
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Second Meeting",
+          "description": "This is a second Meeting!",
+          "date": [
+            2025,
+            1,
+            1,
+            "10",
+            0
+          ]
+        }
+      ],
+      "id": 3
     }
   ],
   "bookings": [
