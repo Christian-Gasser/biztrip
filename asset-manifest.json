@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Christian-Gasser/biztrip/static/css/main.e520982b.css",
-    "main.js": "/Christian-Gasser/biztrip/static/js/main.31184361.js",
+    "main.js": "/Christian-Gasser/biztrip/static/js/main.3d22550a.js",
     "index.html": "/Christian-Gasser/biztrip/index.html",
     "main.e520982b.css.map": "/Christian-Gasser/biztrip/static/css/main.e520982b.css.map",
-    "main.31184361.js.map": "/Christian-Gasser/biztrip/static/js/main.31184361.js.map"
+    "main.3d22550a.js.map": "/Christian-Gasser/biztrip/static/js/main.3d22550a.js.map"
   },
   "entrypoints": [
     "static/css/main.e520982b.css",
-    "static/js/main.31184361.js"
+    "static/js/main.3d22550a.js"
   ]
 }
